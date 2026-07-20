@@ -4,109 +4,202 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estadísticas Selección Mexicana</title>
+    <!-- Cargamos una fuente moderna desde Google Fonts para darle ese toque editorial -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
+        :root {
+            --bg-color: #f8fafc; /* Gris muy claro y limpio */
+            --primary-color: #064e3b; /* Verde oscuro elegante */
+            --text-dark: #0f172a; /* Casi negro para mejor legibilidad */
+            --text-muted: #64748b; /* Gris para textos secundarios */
+            --border-color: #e2e8f0; /* Bordes muy finos */
+            --accent-color: #10b981; /* Verde brillante para detalles */
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: #f4f6f8;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-color);
             margin: 0;
-            padding: 20px;
-            color: #333;
+            padding: 40px 20px;
+            color: var(--text-dark);
+            -webkit-font-smoothing: antialiased;
         }
+
         header {
-            text-align: center;
-            margin-bottom: 30px;
+            max-width: 1200px;
+            margin: 0 auto 50px auto;
+            text-align: left; /* Alineado a la izquierda como los sitios editoriales */
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 20px;
         }
-        h1 {
-            color: #075e3c; /* Verde selección */
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin: 0 0 10px 0;
+            color: var(--primary-color);
+            letter-spacing: -0.03em;
         }
+
+        header p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin: 0;
+            font-weight: 400;
+        }
+
+        /* Contenedor principal en cuadrícula */
         .container {
-            max-width: 900px;
+            max-width: 1200px;
             margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 24px;
         }
+
+        /* Estilo de tarjeta limpia tipo Pase Clave */
         .card {
-            background: white;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.03);
+        }
+
+        /* Etiquetas pequeñas superiores */
+        .category-badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            color: var(--accent-color);
+            margin-bottom: 12px;
+        }
+
         .card-title {
-            margin-top: 0;
-            color: #075e3c;
-            border-bottom: 2px solid #f0f0f0;
-            padding-bottom: 10px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin: 0 0 16px 0;
+            color: var(--primary-color);
+            letter-spacing: -0.02em;
+            line-height: 1.2;
         }
+
         .actualidad {
-            line-height: 1.5;
-            margin-bottom: 15px;
-            white-space: pre-line; /* Mantiene los saltos de línea */
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #334155;
+            margin: 0 0 24px 0;
+            white-space: pre-line;
         }
+
+        .partidos-section {
+            border-top: 1px solid var(--border-color);
+            padding-top: 16px;
+            margin-top: auto; /* Empuja esta sección al fondo de la tarjeta */
+        }
+
         .partidos-title {
-            font-weight: bold;
-            color: #555;
-            margin-bottom: 10px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-bottom: 12px;
         }
+
+        /* Items de partidos con estilo minimalista */
         .partido-item {
-            background: #f9f9f9;
-            border-left: 4px solid #075e3c;
-            padding: 10px;
-            margin-bottom: 8px;
-            border-radius: 0 4px 4px 0;
+            margin-bottom: 12px;
         }
+
+        .partido-item:last-child {
+            margin-bottom: 0;
+        }
+
         .partido-fecha {
-            font-size: 0.85em;
-            color: #666;
-            font-weight: bold;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-bottom: 2px;
+        }
+
+        .partido-evento {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        /* Responsivo para móviles */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            body {
+                padding: 20px 15px;
+            }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>🇲🇽 Central de Selecciones Mexicanas</h1>
-        <p>Actualidad, calendarios y seguimiento de todas las categorías</p>
+        <h1>México Stats</h1>
+        <p>El pulso de las selecciones nacionales en todas sus categorías.</p>
     </header>
 
     <div class="container" id="selecciones-container">
-        <!-- Las tarjetas se cargarán aquí automáticamente -->
-        <p>Cargando información...</p>
+        <!-- Tarjetas dinámicas -->
     </div>
 
     <script>
-        // Función para cargar los datos del JSON
         async function cargarDatos() {
             try {
                 const respuesta = await fetch('datos.json');
                 const datos = await respuesta.json();
                 
                 const container = document.getElementById('selecciones-container');
-                container.innerHTML = ''; // Limpiar el mensaje de carga
+                container.innerHTML = ''; 
 
                 datos.forEach(seleccion => {
-                    // Crear la tarjeta
                     const card = document.createElement('div');
                     card.className = 'card';
 
-                    // Crear la lista de partidos
                     let partidosHTML = '';
                     if (seleccion.proximos_partidos.length > 0) {
-                        partidosHTML = `<div class="partidos-title">Próximos Partidos:</div>`;
+                        partidosHTML = `
+                            <div class="partidos-section">
+                                <div class="partidos-title">Próximos Encuentros</div>
+                        `;
                         seleccion.proximos_partidos.forEach(partido => {
                             partidosHTML += `
                                 <div class="partido-item">
                                     <div class="partido-fecha">${partido.fecha}</div>
-                                    <div>${partido.evento}</div>
+                                    <div class="partido-evento">${partido.evento}</div>
                                 </div>
                             `;
                         });
-                    } else {
-                        partidosHTML = `<p>No hay partidos programados en el corto plazo.</p>`;
+                        partidosHTML += `</div>`;
                     }
 
-                    // Insertar el contenido en la tarjeta
                     card.innerHTML = `
-                        <h2 class="card-title">${seleccion.nombre}</h2>
-                        <p class="actualidad">${seleccion.actualidad}</p>
+                        <div>
+                            <span class="category-badge">Categoría</span>
+                            <h2 class="card-title">${seleccion.nombre}</h2>
+                            <p class="actualidad">${seleccion.actualidad}</p>
+                        </div>
                         ${partidosHTML}
                     `;
 
@@ -114,13 +207,12 @@
                 });
 
             } catch (error) {
-                console.error("Error al cargar los datos:", error);
+                console.error("Error cargando los datos:", error);
                 document.getElementById('selecciones-container').innerHTML = 
-                    '<p>Ocurrió un error al cargar la información. Inténtalo de nuevo más tarde.</p>';
+                    '<p style="grid-column: 1/-1; text-align: center; color: var(--text-muted);">No se pudieron cargar los datos.</p>';
             }
         }
 
-        // Ejecutar al cargar la página
         cargarDatos();
     </script>
 </body>
