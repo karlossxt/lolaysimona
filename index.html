@@ -3,236 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lola, Simona y Mirra | Guardería Canina</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Rowdies:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Estadísticas Selección Mexicana</title>
     <style>
-        :root {
-            --rosa: #e62e64;
-            --marron: #5d3424;
-            --marron-claro: #8d5d4a;
-            --gris: #f8f9fa;
-            --blanco: #ffffff;
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #f4f6f8;
+            margin: 0;
+            padding: 20px;
+            color: #333;
         }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Poppins', sans-serif; color: #333; line-height: 1.6; overflow-x: hidden; }
-        
-        /* Navegación */
         header {
-            background: var(--blanco);
-            padding: 10px 5%;
-            display: flex; justify-content: space-between; align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky; top: 0; z-index: 1000;
+            text-align: center;
+            margin-bottom: 30px;
         }
-        .logo img { height: 70px; }
-        nav ul { display: flex; list-style: none; }
-        nav ul li { margin-left: 15px; }
-        nav ul li a { text-decoration: none; color: var(--marron); font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
-        nav ul li a:hover { color: var(--rosa); }
-
-        section { padding: 80px 10%; }
-        h2 { font-family: 'Rowdies', cursive; color: var(--marron); text-align: center; margin-bottom: 40px; font-size: 2.5rem; }
-        h3 { color: var(--rosa); margin-bottom: 15px; }
-
-        /* Hero */
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1350&q=80');
-            background-size: cover; background-position: center; height: 70vh;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            color: white; text-align: center;
+        h1 {
+            color: #075e3c; /* Verde selección */
         }
-        .hero h1 { font-family: 'Rowdies', cursive; font-size: 4rem; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
-
-        /* Horarios */
-        .horarios { background: var(--gris); text-align: center; }
-        .grid-horarios { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
-        .horario-card { background: white; padding: 20px; border-radius: 15px; border-left: 5px solid var(--rosa); }
-
-        /* Requisitos y Restricciones */
-        .normas { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-        .list { list-style: none; }
-        .list li { margin-bottom: 12px; padding-left: 35px; position: relative; }
-        .list li i { position: absolute; left: 0; top: 5px; color: var(--rosa); }
-        .restricciones { background: #fff5f7; padding: 30px; border-radius: 20px; border: 2px dashed var(--rosa); }
-
-        /* Galería */
-        .galeria-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px; }
-        .galeria-grid img { width: 100%; height: 250px; object-fit: cover; border-radius: 15px; transition: 0.3s; cursor: pointer; }
-        .galeria-grid img:hover { transform: scale(1.03); }
-
-        /* Promociones */
-        .promos { background: var(--marron); color: white; }
-        .promos h2 { color: white; }
-        .promo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .promo-card { background: rgba(255,255,255,0.1); padding: 30px; border-radius: 20px; text-align: center; border: 1px solid var(--rosa); }
-        .precio { font-size: 2rem; font-weight: bold; color: var(--rosa); display: block; margin: 10px 0; }
-
-        /* Reseñas */
-        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .review-card { background: var(--gris); padding: 25px; border-radius: 15px; position: relative; }
-        .stars { color: #ffc107; margin-bottom: 10px; }
-
-        /* Contacto */
-        .contacto-container { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
-        .info-contacto p { margin-bottom: 15px; font-size: 1.1rem; }
-        .info-contacto i { color: var(--rosa); margin-right: 10px; width: 25px; }
-        form input, form textarea { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 8px; font-family: inherit; }
-        .btn-submit { background: var(--rosa); color: white; border: none; padding: 15px 30px; border-radius: 50px; cursor: pointer; font-weight: bold; width: 100%; transition: 0.3s; }
-        .btn-submit:hover { background: var(--marron); }
-
-        /* WhatsApp */
-        .wa-float { position: fixed; bottom: 20px; right: 20px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 30px; z-index: 1000; text-decoration: none; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
-
-        @media (max-width: 768px) {
-            .normas, .contacto-container { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 2.5rem; }
-            header { flex-direction: column; }
-            nav ul { margin-top: 15px; flex-wrap: wrap; justify-content: center; }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .card-title {
+            margin-top: 0;
+            color: #075e3c;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+        }
+        .actualidad {
+            line-height: 1.5;
+            margin-bottom: 15px;
+            white-space: pre-line; /* Mantiene los saltos de línea */
+        }
+        .partidos-title {
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 10px;
+        }
+        .partido-item {
+            background: #f9f9f9;
+            border-left: 4px solid #075e3c;
+            padding: 10px;
+            margin-bottom: 8px;
+            border-radius: 0 4px 4px 0;
+        }
+        .partido-fecha {
+            font-size: 0.85em;
+            color: #666;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
 
-    <a href="https://wa.me/5215512345678" class="wa-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
-
     <header>
-        <div class="logo"><img src="tu-logo.png" alt="Lola Simona y Mirra"></div>
-        <nav>
-            <ul>
-                <li><a href="#horarios">Horarios</a></li>
-                <li><a href="#requisitos">Requisitos</a></li>
-                <li><a href="#promos">Promociones</a></li>
-                <li><a href="#galeria">Galería</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
-        </nav>
+        <h1>🇲🇽 Central de Selecciones Mexicanas</h1>
+        <p>Actualidad, calendarios y seguimiento de todas las categorías</p>
     </header>
 
-    <section class="hero">
-        <h1>Lola, Simona y Mirra</h1>
-        <p>El paraíso de juego y descanso para tu peludo</p>
-    </section>
+    <div class="container" id="selecciones-container">
+        <!-- Las tarjetas se cargarán aquí automáticamente -->
+        <p>Cargando información...</p>
+    </div>
 
-    <!-- HORARIOS -->
-    <section id="horarios" class="horarios">
-        <h2>Horarios de Entrada y Salida</h2>
-        <div class="grid-horarios">
-            <div class="horario-card">
-                <h3>Lunes a Viernes</h3>
-                <p><strong>Entrada:</strong> 07:30 - 10:00</p>
-                <p><strong>Salida:</strong> 17:00 - 19:30</p>
-            </div>
-            <div class="horario-card">
-                <h3>Sábados</h3>
-                <p><strong>Entrada:</strong> 09:00 - 11:00</p>
-                <p><strong>Salida:</strong> 16:00 - 18:00</p>
-            </div>
-            <div class="horario-card">
-                <h3>Domingos</h3>
-                <p>Solo bajo previa reservación de hospedaje.</p>
-            </div>
-        </div>
-    </section>
+    <script>
+        // Función para cargar los datos del JSON
+        async function cargarDatos() {
+            try {
+                const respuesta = await fetch('datos.json');
+                const datos = await respuesta.json();
+                
+                const container = document.getElementById('selecciones-container');
+                container.innerHTML = ''; // Limpiar el mensaje de carga
 
-    <!-- REQUISITOS Y RESTRICCIONES -->
-    <section id="requisitos">
-        <div class="normas">
-            <div>
-                <h2>Requisitos</h2>
-                <ul class="list">
-                    <li><i class="fas fa-paw"></i> Mínimo 4 meses de edad.</li>
-                    <li><i class="fas fa-paw"></i> Cartilla de vacunación vigente.</li>
-                    <li><i class="fas fa-paw"></i> Desparasitación interna y externa (Flexibilidad bajo criterio del MVZ de Inteligencia Canina).</li>
-                    <li><i class="fas fa-paw"></i> Collar con placa de identificación.</li>
-                </ul>
-            </div>
-            <div class="restricciones">
-                <h2 style="margin-bottom: 20px;">Restricciones</h2>
-                <ul class="list">
-                    <li><i class="fas fa-times-circle"></i> Perros agresivos.</li>
-                    <li><i class="fas fa-times-circle"></i> Perros enfermos o en tratamiento médico.</li>
-                    <li><i class="fas fa-times-circle"></i> Perros mayores de 8 años.</li>
-                    <li><i class="fas fa-times-circle"></i> Razas Potencialmente Peligrosas (PPP) mayores a 8 meses.</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+                datos.forEach(seleccion => {
+                    // Crear la tarjeta
+                    const card = document.createElement('div');
+                    card.className = 'card';
 
-    <!-- PROMOCIONES -->
-    <section id="promos" class="promos">
-        <h2>Cotizaciones y Promociones</h2>
-        <div class="promo-grid">
-            <div class="promo-card">
-                <h3>Pack "Mejores Amigos"</h3>
-                <p>Trae a dos perros de la misma familia y obtén un descuento.</p>
-                <span class="precio">-15% Segundo Perro</span>
-            </div>
-            <div class="promo-card">
-                <h3>Pase Mensual</h3>
-                <p>Asistencia de Lunes a Viernes. ¡La mejor opción para trabajadores!</p>
-                <span class="precio">$3,500 / mes</span>
-            </div>
-            <div class="promo-card">
-                <h3>Primera Visita Gratis</h3>
-                <p>¡Ven a conocernos! La evaluación de socialización no tiene costo.</p>
-                <span class="precio">$0.00</span>
-            </div>
-        </div>
-    </section>
+                    // Crear la lista de partidos
+                    let partidosHTML = '';
+                    if (seleccion.proximos_partidos.length > 0) {
+                        partidosHTML = `<div class="partidos-title">Próximos Partidos:</div>`;
+                        seleccion.proximos_partidos.forEach(partido => {
+                            partidosHTML += `
+                                <div class="partido-item">
+                                    <div class="partido-fecha">${partido.fecha}</div>
+                                    <div>${partido.evento}</div>
+                                </div>
+                            `;
+                        });
+                    } else {
+                        partidosHTML = `<p>No hay partidos programados en el corto plazo.</p>`;
+                    }
 
-    <!-- GALERÍA -->
-    <section id="galeria">
-        <h2>Nuestra Galería</h2>
-        <div class="galeria-grid">
-            <img src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&w=500&q=80" alt="Perros jugando">
-            <img src="https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?auto=format&fit=crop&w=500&q=80" alt="Perro descansando">
-            <img src="https://images.unsplash.com/photo-1544568100-847a948585b9?auto=format&fit=crop&w=500&q=80" alt="Grupo de perros">
-            <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&w=500&q=80" alt="Golden retriever">
-        </div>
-    </section>
+                    // Insertar el contenido en la tarjeta
+                    card.innerHTML = `
+                        <h2 class="card-title">${seleccion.nombre}</h2>
+                        <p class="actualidad">${seleccion.actualidad}</p>
+                        ${partidosHTML}
+                    `;
 
-    <!-- RESEÑAS -->
-    <section id="resenas" class="horarios">
-        <h2>Lo que dicen los papás perrunos</h2>
-        <div class="reviews-grid">
-            <div class="review-card">
-                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p>"Excelente trato, Simona y Lola son unas anfitrionas increíbles. Mi perro llega feliz y regresa cansado de tanto jugar."</p>
-                <br><strong>- Juan Pérez</strong>
-            </div>
-            <div class="review-card">
-                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                <p>"Me da mucha tranquilidad dejar a 'Toby' aquí. Me mandan videos todo el día y las instalaciones están impecables."</p>
-                <br><strong>- María G.</strong>
-            </div>
-        </div>
-    </section>
+                    container.appendChild(card);
+                });
 
-    <!-- CONTACTO -->
-    <section id="contacto">
-        <h2>Contacto</h2>
-        <div class="contacto-container">
-            <div class="info-contacto">
-                <h3>¡Hablemos!</h3>
-                <p><i class="fas fa-map-marker-alt"></i> Avenida de los Pinos 456, Col. Jardines, Ciudad de México.</p>
-                <p><i class="fas fa-phone"></i> +52 55 1234 5678</p>
-                <p><i class="fas fa-envelope"></i> hola@lolasimonaymirra.com</p>
-                <p><i class="fas fa-clock"></i> Atención telefónica: 08:00 - 20:00</p>
-            </div>
-            <form>
-                <input type="text" placeholder="Nombre de tu peludo" required>
-                <input type="email" placeholder="Tu correo electrónico" required>
-                <textarea rows="5" placeholder="¿En qué podemos ayudarte? (Cotización, dudas, fechas...)"></textarea>
-                <button type="submit" class="btn-submit">Enviar Mensaje</button>
-            </form>
-        </div>
-    </section>
+            } catch (error) {
+                console.error("Error al cargar los datos:", error);
+                document.getElementById('selecciones-container').innerHTML = 
+                    '<p>Ocurrió un error al cargar la información. Inténtalo de nuevo más tarde.</p>';
+            }
+        }
 
-    <footer style="background: var(--marron); color: white; text-align: center; padding: 20px;">
-        <p>&copy; 2023 Lola, Simona y Mirra | Guardería Canina Profesional</p>
-    </footer>
-
+        // Ejecutar al cargar la página
+        cargarDatos();
+    </script>
 </body>
 </html>
