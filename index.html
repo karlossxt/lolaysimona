@@ -214,6 +214,20 @@
         }
 
         cargarDatos();
+        // Dentro del bucle datos.forEach de tu index.html, añade este enlace al final de la tarjeta:
+card.innerHTML = `
+    <div>
+        <span class="category-badge">Categoría</span>
+        <h2 class="card-title">${seleccion.nombre}</h2>
+        <p class="actualidad">${seleccion.actualidad}</p>
+    </div>
+    ${partidosHTML}
+    <div style="margin-top: 20px; border-top: 1px solid var(--border-color); padding-top: 15px;">
+        <a href="categoria.html?id=${seleccion.id}" style="color: var(--accent-color); font-weight: 700; text-decoration: none; font-size: 0.9rem;">
+            Ver plantilla y resultados recientes →
+        </a>
+    </div>
+`;
     </script>
 </body>
 </html>
