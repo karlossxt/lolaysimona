@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de Categoría</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #f8fafc;
+            --primary-color: #064e3b;
+            --text-dark: #0f172a;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --accent-color: #10b981;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 40px 20px;
+            color: var(--text-dark);
+        }
+
+        .back-link {
+            max-width: 1000px;
+            margin: 0 auto 20px auto;
+            display: block;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        header {
+            max-width: 1000px;
+            margin: 0 auto 40px auto;
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin: 0 0 10px 0;
+            letter-spacing: -0.02em;
+        }
+
+        .grid-layout {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .grid-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin: 0 0 20px 0;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 8px;
+            color: var(--primary-color);
+        }
+
+        .panel {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        /* Tabla o lista de jugadores */
+        .player-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.95rem;
+        }
+        .player-row.header-row {
+            font-weight: 700;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+        .player-row:last-child {
+            border-bottom: none;
+        }
+
+        /* Estilo de resultados */
+        .resultado-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .resultado-item:last-child {
+            border-bottom: none;
+        }
+        .resultado-meta {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+        .resultado-info {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-top: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="back-link">← Volver al inicio</a>
+
+    <header>
+        <h1 id="cat-title">Cargando categoría...</h1>
+        <p id="cat-desc"></p>
+    </header>
+
+    <div class="grid-layout">
+        <!-- Columna Principal: Plantilla y Resultados -->
+        <div>
+            <div class="panel">
+                <h3 class="section-title">Plantilla Actual</h3>
+                <div id="plantilla-container">
+                    <!-- Se llena con JS -->
+                </div>
+            </div>
+
+            <div class="panel">
+                <h3 class="section-title">Últimos Resultados</h3>
+                <div id="resultados-container">
+                    <!-- Se llena con JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Columna Lateral: Próximos Partidos -->
+        <div>
+            <div class="panel">
+                <h3 class="section-title">Calendario</h3>
+                <div id="calendario-container">
+                    <!-- Se llena con JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Obtener el ID de la URL (ej: categoria.html?id=mayor_varonil)
+        const urlParams = new URLSearchParams(window.location.search);
+        const categoriaId = urlParams.get('id');
+
+        async function cargarCategoria() {
+            try {
+                const respuesta = await fetch('datos.json');
+                const datos = await respuesta.json();
+
+                // Buscar la selección correspondiente
+                const seleccion = datos.find(item => item.id === categoriaId);
+
+                if (!seleccion) {
+                    document.body.innerHTML = "<h2>Categoría no encontrada</h2><a href='index.html'>Volver</a>";
+                    return;
+                }
+
+                // Colocar Textos Principales
+                document.getElementById('cat-title').innerText = seleccion.nombre;
+                document.getElementById('cat-desc').innerText = seleccion.actualidad;
+
+                // 1. Renderizar Plantilla
+                const plantillaContainer = document.getElementById('plantilla-container');
+                if (seleccion.plantilla && seleccion.plantilla.length > 0) {
+                    let plantillaHTML = `
+                        <div class="player-row header-row">
+                            <div>Nombre</div>
+                            <div>Posición</div>
+                            <div>Club</div>
+                        </div>
+                    `;
+                    seleccion.plantilla.forEach(jugador => {
+                        plantillaHTML += `
+                            <div class="player-row">
+                                <div style="font-weight:600;">${jugador.nombre}</div>
+                                <div>${jugador.posicion}</div>
+                                <div style="color:var(--text-muted);">${jugador.club}</div>
+                            </div>
+                        `;
+                    });
+                    plantillaContainer.innerHTML = plantillaHTML;
+                } else {
+                    plantillaContainer.innerHTML = "<p style='color:var(--text-muted);'>No hay información de plantilla disponible.</p>";
+                }
+
+                // 2. Renderizar Resultados
+                const resultadosContainer = document.getElementById('resultados-container');
+                if (seleccion.ultimos_resultados && seleccion.ultimos_resultados.length > 0) {
+                    let resultadosHTML = '';
+                    seleccion.ultimos_resultados.forEach(res => {
+                        resultadosHTML += `
+                            <div class="resultado-item">
+                                <div class="resultado-meta">${res.fecha} • ${res.torneo}</div>
+                                <div class="resultado-info">${res.partido}</div>
+                            </div>
+                        `;
+                    });
+                    resultadosContainer.innerHTML = resultadosHTML;
+                } else {
+                    resultadosContainer.innerHTML = "<p style='color:var(--text-muted);'>No hay resultados recientes registrados.</p>";
+                }
+
+                // 3. Renderizar Calendario (Próximos Partidos)
+                const calendarioContainer = document.getElementById('calendario-container');
+                if (seleccion.proximos_partidos && seleccion.proximos_partidos.length > 0) {
+                    let calendarioHTML = '';
+                    seleccion.proximos_partidos.forEach(partido => {
+                        calendarioHTML += `
+                            <div class="resultado-item">
+                                <div class="resultado-meta">${partido.fecha}</div>
+                                <div class="resultado-info" style="font-size:0.9rem;">${partido.evento}</div>
+                            </div>
+                        `;
+                    });
+                    calendarioContainer.innerHTML = calendarioHTML;
+                } else {
+                    calendarioContainer.innerHTML = "<p style='color:var(--text-muted);'>No hay partidos programados.</p>";
+                }
+
+            } catch (error) {
+                console.error("Error al cargar la categoría:", error);
+            }
+        }
+
+        cargarCategoria();
+    </script>
+</body>
+</html>
