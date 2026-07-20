@@ -1,0 +1,77 @@
+[
+  {
+    "id": "mayor_varonil",
+    "nombre": "🇲🇽 Selección Mayor (Varonil)",
+    "actualidad": "El combinado nacional cerró su participación en la Copa del Mundo de 2026 tras ser eliminado en Octavos de Final ante Inglaterra (2-3) en el Estadio Azteca. Tras este torneo, el equipo inicia un nuevo ciclo deportivo bajo la dirección técnica de Rafael Márquez enfocado en el Mundial 2030.",
+    "proximos_partidos": [
+      {
+        "fecha": "Septiembre 21 - Octubre 6 (2026)",
+        "evento": "Gira por Estados Unidos con cuatro partidos amistosos (rivales y sedes por confirmar)."
+      }
+    ]
+  },
+  {
+    "id": "sub23_varonil",
+    "nombre": "🏆 Selección Sub-23 y Olímpica (Varonil)",
+    "actualidad": "Dirigida por Eduardo Arce, la plantilla se encuentra concentrada tras cerrar su preparación con un empate 2-2 ante Correcaminos de la UAT. Están listos para disputar los Juegos Centroamericanos y del Caribe Santo Domingo 2026.",
+    "proximos_partidos": [
+      {
+        "fecha": "30 de Julio, 2026",
+        "evento": "México vs. Guatemala (Fase de Grupos)"
+      },
+      {
+        "fecha": "Por confirmar (30 jul - 7 ago)",
+        "evento": "México vs. Venezuela y México vs. República Dominicana"
+      }
+    ]
+  },
+  {
+    "id": "sub20_varonil",
+    "nombre": "⚡ Selección Sub-20 (Varonil)",
+    "actualidad": "El equipo comandado por Alex Diego arranca el Campeonato Sub-20 de la Concacaf, el cual otorga los boletos clave para el Mundial de la categoría en 2027 y los Juegos Olímpicos de Los Ángeles 2028.",
+    "proximos_partidos": [
+      {
+        "fecha": "24 de Julio, 2026 (14:00 HRS)",
+        "evento": "México vs. Antigua y Barbuda (Estadio Cuauhtémoc)"
+      },
+      {
+        "fecha": "27 de Julio, 2026 (20:00 HRS)",
+        "evento": "México vs. Costa Rica (Estadio Cuauhtémoc)"
+      }
+    ]
+  },
+  {
+    "id": "mayor_femenil",
+    "nombre": "🙋‍♀️ Selección Mayor Femenil",
+    "actualidad": "El equipo dirigido por Pedro López tiene la mira puesta en las eliminatorias oficiales de la Concacaf buscando el boleto al Mundial Femenino de Brasil 2027 y las Olimpiadas de 2028.",
+    "proximos_partidos": [
+      {
+        "fecha": "28 de Noviembre, 2026",
+        "evento": "México vs. Haití (Cuartos de Final del Campeonato Concacaf W)"
+      }
+    ]
+  },
+  {
+    "id": "femeniles_menores",
+    "nombre": "👧 Selecciones Femeniles Menores",
+    "actualidad": "Sub-23 Femenil: La entrenadora Vanessa Martínez ya se encuentra en República Dominicana con 20 convocadas para disputar los Juegos Centroamericanos.\n\nSub-17 Femenil: Se preparan para disputar la Copa del Mundo de la categoría en Marruecos.",
+    "proximos_partidos": [
+      {
+        "fecha": "29 de Julio, 2026 (17:00 HRS)",
+        "evento": "Sub-23: México vs. Puerto Rico"
+      },
+      {
+        "fecha": "31 de Julio, 2026",
+        "evento": "Sub-23: México vs. Colombia"
+      },
+      {
+        "fecha": "2 de Agosto, 2026",
+        "evento": "Sub-23: México vs. Jamaica"
+      },
+      {
+        "fecha": "Octubre 2026",
+        "evento": "Sub-17: Fase de grupos del Mundial (Marruecos) contra España, Chile y Australia"
+      }
+    ]
+  }
+]
