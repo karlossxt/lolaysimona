@@ -72,6 +72,25 @@
         "fecha": "Octubre 2026",
         "evento": "Sub-17: Fase de grupos del Mundial (Marruecos) contra España, Chile y Australia"
       }
+      [
+  {
+    "id": "mayor_varonil",
+    "nombre": "🇲🇽 Selección Mayor (Varonil)",
+    "actualidad": "El combinado nacional inició un nuevo ciclo deportivo bajo la dirección técnica de Rafael Márquez enfocado en el Mundial 2030.",
+    "ultimos_resultados": [
+      { "fecha": "14 de Junio, 2026", "partido": "México 2 - 3 Inglaterra", "torneo": "Copa del Mundo - Octavos de Final" },
+      { "fecha": "10 de Junio, 2026", "partido": "México 1 - 0 Arabia Saudita", "torneo": "Copa del Mundo - Fase de Grupos" }
+    ],
+    "proximos_partidos": [
+      { "fecha": "Septiembre 21, 2026", "evento": "México vs. Rival por Confirmar (Amistoso)" }
+    ],
+    "plantilla": [
+      { "nombre": "Guillermo Ochoa", "posicion": "Portero", "club": "AVS Futebol SAD", "edad": 40 },
+      { "nombre": "Johan Vásquez", "posicion": "Defensa", "club": "Genoa C.F.C.", "edad": 27 },
+      { "nombre": "Santiago Giménez", "posicion": "Delantero", "club": "Feyenoord", "edad": 25 }
+    ]
+  }
+]
     ]
   }
 ]
